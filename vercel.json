@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "dogan-ai-factory",
+  "builds": [
+    {
+      "src": "proxy/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/proxy/server.js"
+    },
+    {
+      "src": "/proxy/(.*)",
+      "dest": "/proxy/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/proxy/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "proxy/server.js": {
+      "maxDuration": 30
+    }
+  }
+}
