@@ -1,216 +1,137 @@
 # 🤖 Dogan AI Factory
 
-A comprehensive AI-powered business automation platform with intelligent agents for accounting, programming, marketing, and administrative tasks.
+AI-powered business automation platform with intelligent agents specialized for Saudi Arabian businesses.
 
-## 🌟 Features
+## 🚀 Features
 
-- **🤖 AI Agents**: Multiple specialized AI assistants (Accountant, Secretary, Programmer, Marketing Consultant)
-- **💳 Subscription Management**: Complete subscription lifecycle with real payment processing
-- **📱 SMS Integration**: Multi-provider SMS service with OTP verification
-- **🔐 Authentication**: Secure user authentication with JWT and session management
-- **📊 Real-time Analytics**: Business intelligence and reporting
-- **🌍 Multi-language**: Arabic and English support
-- **💾 Database Integration**: Supabase integration with real-time capabilities
+- **Smart AI Agents**: Specialized agents for accounting, sales, and business operations
+- **Arabic Language Support**: Full Arabic language support with cultural context
+- **ZATCA Compliance**: Built-in compliance with Saudi tax authority requirements
+- **Real-time Chat**: Interactive chat interface with AI agents
+- **Subscription Management**: Flexible subscription plans
+- **Secure Authentication**: JWT-based authentication system
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
 
-### Prerequisites
+- **Backend**: Node.js, Express.js
+- **AI**: OpenAI GPT-3.5/GPT-4
+- **Database**: Supabase (PostgreSQL)
+- **Deployment**: Vercel
+- **Authentication**: JWT
 
-- Node.js 18+ 
-- npm or yarn
-- Supabase account
-- OpenAI API key
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/dogan-ai-factory.git
-cd dogan-ai-factory
-```
-
-2. **Install dependencies**
-```bash
-npm install
-```
-
-3. **Configure environment variables**
-```bash
-cp .env.example .env.production
-# Edit .env.production with your actual values
-```
-
-4. **Set up database**
-```bash
-# Run the SQL schema in your Supabase dashboard
-# File: database/subscriptions-schema.sql
-```
-
-5. **Start the application**
-```bash
-npm start
-```
-
-## 🔧 Configuration
-
-### Required Environment Variables
+## 🔧 Environment Variables
 
 ```env
-# OpenAI (Required)
-OPENAI_API_KEY=sk-your-openai-api-key
-
-# Supabase (Required)
+NODE_ENV=production
+OPENAI_API_KEY=your-openai-api-key
 SUPABASE_URL=your-supabase-url
 SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-
-# JWT Secret (Required)
-JWT_SECRET=your-jwt-secret-minimum-32-chars
+JWT_SECRET=your-jwt-secret
+SESSION_SECRET=your-session-secret
+FACTORY_TOKEN=your-factory-token
+ENABLE_OPENAI=true
+ENABLE_CACHE=true
+ENABLE_RATE_LIMIT=true
+ENABLE_AUDIT_LOG=true
+FRONTEND_URL=your-frontend-url
+API_URL=your-api-url
+CORS_ORIGIN=your-cors-origin
 ```
 
-### Optional Services
+## 🚀 Quick Start
 
-- **SMS**: Twilio, AWS SNS, or Local SMS Gateway
-- **Payments**: Stripe or PayPal
-- **Email**: SMTP configuration
-- **Monitoring**: Sentry, New Relic
+### Local Development
 
-## 📁 Project Structure
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/dogan-ai-factory.git
+   cd dogan-ai-factory
+   ```
 
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your values
+   ```
+
+4. **Start the server**
+   ```bash
+   npm start
+   ```
+
+### Deploy to Vercel
+
+1. **Push to GitHub**
+2. **Connect to Vercel**
+3. **Add environment variables**
+4. **Deploy**
+
+## 📡 API Endpoints
+
+### Health Check
 ```
-dogan-ai-factory/
-├── proxy/                 # Main server and API routes
-│   ├── server.js          # Express server
-│   ├── routes/            # API endpoints
-│   └── services/          # Business logic
-├── services/              # Shared services
-│   ├── SubscriptionService.js
-│   └── SmsService.js
-├── database/              # Database schemas
-├── DoganAI-Package/       # AI package components
-└── api/                   # Additional API routes
+GET /api/health
 ```
-
-## 🤖 AI Agents
-
-### المحاسب الذكي (Smart Accountant)
-- VAT calculations
-- Zakat calculations  
-- ZATCA compliance
-- Financial reporting
-
-### السكرتير الرقمي (Digital Secretary)
-- Meeting scheduling
-- Email drafting
-- Task management
-- Document organization
-
-### المبرمج المساعد (Programming Assistant)
-- Code generation
-- Bug fixing
-- Code review
-- Technical documentation
-
-### مستشار التسويق (Marketing Consultant)
-- Marketing strategies
-- Campaign planning
-- Market analysis
-- Content creation
-
-## 💳 Subscription Tiers
-
-- **Free Trial**: 14 days, basic features
-- **Standard Junior**: 299 SAR/month
-- **Standard Senior**: 599 SAR/month  
-- **Professional**: 999 SAR/month
-- **Enterprise**: 1999 SAR/month
-
-## 🔐 Security Features
-
-- JWT authentication
-- Rate limiting
-- CORS protection
-- Input validation
-- SQL injection prevention
-- XSS protection
-
-## 📊 Monitoring & Analytics
-
-- Real-time usage tracking
-- Performance monitoring
-- Error logging
-- Business analytics
-- User behavior insights
-
-## 🌍 Deployment
-
-### Vercel (Recommended)
-
-1. **Connect to GitHub**
-2. **Configure environment variables in Vercel dashboard**
-3. **Deploy automatically on push**
-
-### Manual Deployment
-
-```bash
-npm run build
-npm run start:production
-```
-
-## 🧪 Testing
-
-```bash
-# Test all production services
-node test_production_services.js
-
-# Run unit tests
-npm test
-
-# Run integration tests
-npm run test:integration
-```
-
-## 📚 API Documentation
 
 ### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
+```
+POST /api/auth/register
+POST /api/auth/login
+```
 
-### AI Chat
-- `POST /api/chat` - Send message to AI agent
-- `GET /api/chat/agents` - List available agents
+### Chat
+```
+POST /api/chat
+```
 
 ### Subscriptions
-- `GET /api/subscription/tiers` - Get subscription tiers
-- `POST /api/subscription/create` - Create subscription
-- `GET /api/subscription/:id` - Get subscription details
+```
+GET /api/subscription/plans
+```
 
-## 🤝 Contributing
+## 🤖 Available AI Agents
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+- **المحاسب الذكي** (Smart Accountant): Specialized in Saudi accounting and ZATCA compliance
+- **مندوب المبيعات** (Sales Agent): Expert in sales processes and customer relations
+- **مراقب الجودة** (Quality Assurance): Ensures service quality and compliance
+
+## 🔒 Security Features
+
+- Rate limiting
+- CORS protection
+- Helmet security headers
+- Input validation
+- JWT authentication
+- Request logging
+
+## 📊 Monitoring
+
+- Winston logging
+- Health check endpoints
+- Error tracking
+- Performance monitoring
+
+## 🌍 Localization
+
+- Full Arabic language support
+- Saudi Arabian business context
+- Cultural adaptation
+- RTL text support
+
+## 📞 Support
+
+For support and questions, please contact our team or create an issue in the repository.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- 📧 Email: support@doganai.com
-- 💬 Discord: [Join our community](https://discord.gg/doganai)
-- 📖 Documentation: [docs.doganai.com](https://docs.doganai.com)
-
-## 🙏 Acknowledgments
-
-- OpenAI for GPT-4 API
-- Supabase for database services
-- Vercel for hosting platform
-- All contributors and beta testers
+MIT License - see LICENSE file for details.
 
 ---
 
-**Built with ❤️ for the Saudi Arabian business community**
+**Built with ❤️ for Saudi Arabian businesses**

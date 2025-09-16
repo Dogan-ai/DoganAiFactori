@@ -3,29 +3,25 @@
   "name": "dogan-ai-factory",
   "builds": [
     {
-      "src": "proxy/server.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/proxy/server.js"
-    },
-    {
-      "src": "/proxy/(.*)",
-      "dest": "/proxy/server.js"
+      "dest": "/api/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/proxy/server.js"
+      "dest": "/api/index.js"
     }
   ],
   "env": {
     "NODE_ENV": "production"
   },
   "functions": {
-    "proxy/server.js": {
+    "api/index.js": {
       "maxDuration": 30
     }
   }
